@@ -9,6 +9,9 @@
 
 </span>
 
+> [!CAUTION]
+> Not ready for public usage: this theme itself is still in WIP and a tmplate repository can't really help with that.
+
 # Usage and setup
 Use this template to generate a new repository with contents identical to this one:  
 ![Create a repository out of this template](https://github.com/backups1der/assets/blob/main/temp.png?raw=true)
