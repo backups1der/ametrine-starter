@@ -5,7 +5,7 @@ no_header = true
 +++
 
 <div class="container-fill">
-  <img id="logo" class="transparent drop-shadow" src="logo.svg" alt="VTuber-style Ametrine logo.">
+  <img id="logo" class="has-alpha drop-shadow" src="logo.svg" alt="VTuber-style Ametrine logo.">
 
 
   <div class="buttons centered big">
@@ -14,13 +14,16 @@ no_header = true
   </div>
   
   [Ametrine](https://en.wikipedia.org/wiki/Ametrine) is a "one of a kind" [Zola](https://www.getzola.org) theme made specifically for personal websites and blogs. It provides good defaults and easy configuration, while being somewhat flexible on demand. Its design is unique and made with great care and attention to details, it changes from time to time, and the development pace is rather rapid.
+
+  This unofficial[^1] starter template for Ametrine provides the most basic settings for new people; let it be configuration in `zola.toml` or some example pages to show how to make new pages and use Ametrine's features.
+  [^1]: I, [anins1der](https://anins1der.com), made this template for this theme because... no one did it? It was along the lines of that. Good news is that official author of this theme, [Daudix](https://daudix.one), is [making a official starter template](https://codeberg.org/daudix/ametrine/issues/64) because [welpo](https://osc.garden) did so with his theme, [tabi](https://github.com/welpo/tabi-start).
 </div>
 
 > [!CAUTION]
-> Ametrine is currently in the pre-alpha state and **_SHOULD NOT_** be used in production, it is not ready yet. Version 0.1.0 is on its way and should be released sometime soon, along with a migration guide from [Duckquill](https://duckquill.daudix.one). See [v0.1.0 To-do](https://codeberg.org/daudix/ametrine/issues/3).
+> Ametrine is currently in the pre-alpha state and **_SHOULD NOT_** be used in production, it is not ready yet. Version 0.1.0 is on its way and should be released sometime soon, along with a migration guide from [Duckquill](https://duckquill.daudix.one) for people that were on Duckquill theme. See [v0.1.0 To-do](https://codeberg.org/daudix/ametrine/issues/3).
 
 > [!NOTE]
-> Ametrine **only targets the latest Zola version** available at a given moment, backwards compatibility might be absent, and issues regarding it will be dismissed. This is to keep Ametrine's code easier to maintain (it's already hard to maintain as is).
+> Ametrine **only targets the latest Zola version** available at a given moment, backwards compatibility might be absent, and issues regarding it will be dismissed. This is to keep Ametrine's code easier to maintain (it's already hard to maintain as is for the author).
 
 
 Some of Ametrine's features:
@@ -31,6 +34,7 @@ Some of Ametrine's features:
 - Uses modern CSS.
 - Includes Monokai Pro theme for syntax highlighting out of the box.
 - Will make you regret using this theme.
+  - Maybe. It has made poeple love this theme --- a crazy guy has made this template for a reason.
 
 ## What Is This Again
 
@@ -38,77 +42,28 @@ This is a theme for the [Zola](https://www.getzola.org) static site generator; t
 
 You can learn more about Zola and its themes at <https://www.getzola.org>.
 
-## Installation
+## Maintenance & References
+> [!IMPORTANT]
+> I am going to assume that you have enough knowledge to either use Git from CLI or your preferred editor's Git integration, have enough experience to operate your projects on GitHub. You can have Zola set up on your machine to get live previewing; but it's not exactly required to use with this template since the build workflow installs Zola and builds your website automatically, publishing it to current repository's [GitHub Pages](https://docs.github.com/pages) page.
+>
+> Don't worry, all of these are easy to learn: you don't need to use much brainpower to figure out how to use Git in VSCode/Zed. Zola provides [installation instructions](https://www.getzola.org/documentation/getting-started/installation/), so you should be able to get that on your system pretty easily.
 
-If you have Git set up in your project, add Ametrine as a submodule:
+To update Ametrine, simply update the theme submodule to the latest commit:
 
 ```bash
-git submodule init
-git submodule add https://codeberg.org/daudix/ametrine.git themes/ametrine
+git submodule update --remote themes/ametrine
 ```
-
 > [!IMPORTANT]
-> It is highly recommended to switch from the `main` branch to the latest release:
->
-> ```bash
-> cd themes/ametrine
-> git checkout tags/v0.1.0 # There is currently no tagged release
-> ```
+> Check the [commit history of Ametrine](https://codeberg.org/daudix/ametrine/commits/branch/main) before updating; there may be breaking changes that require manual involvement.
 
-> [!NOTE]
-> If you build your site with a CI, you can reduce the time needed to clone the repo (theoretically) by making Ametrine submodule "shallow":
->
-> ```bash
-> git config -f .gitmodules submodule.themes/ametrine.shallow true
-> ```
-
-Then, enable Ametrine in your `config.toml`:
-
-```toml
-theme = "ametrine"
-```
-
-To update Ametrine, simply switch to a new tag:
-
-> [!IMPORTANT]
-> Check the changelog for all versions after the one you are using; there may be breaking changes that require manual involvement.
-
-```bash
-git submodule update --remote --merge
-cd themes/ametrine
-git checkout tags/v0.1.0
-```
-
-> [!NOTE]
-> If Zola returns an error that looks something like this:
->
-> ```
-> Error: Failed to serve the site
-> Error: Failed to render page '/home/rd/Projects/awsum-website/content/reasons-why-i-m-cool/index.md'
-> Error: Reason: Failed to render 'page.html': error while rendering macro `macros::icon` (error happened in a parent template)
-> Error: Reason: Filter call 'urlencode' failed
-> Error: Reason: Filter `urlencode` was called on an incorrect value: got `null` but expected a String
-> ```
->
-> Worry not, it can be fixed by running the following command:
->
-> ```bash
-> git submodule update --init --recursive
-> ```
->
-> This happens because Ametrine itself utilises a Git submodule that is required for it to function: [ametrine-icons](https://codeberg.org/daudix/ametrine-icons), which contains [phosphor-icons](https://github.com/phosphor-icons/core) and [simple-icons](https://github.com/simple-icons/simple-icons).
+Ametrine has it's own [demo](https://ametrine.daudix.one/demo) page which shows off some features. You can also check the [CommonMark specification page](https://spec.commonmark.org), where it lists what CommonMark can do.
 
 ## Development
 
-Working on Ametrine and your (nick)name isn't daudix? That's awesome! You might know that Ametrine requires a Last.fm API key, setting which each time can get tiresome, for this reason I have threw together a tiny script---`dev.sh`---that loads contents of `.env` file and runs Zola Flatpak with any arguments you might want to specify.
+There is a `serve.sh` file on root of the project, that sources .env file and serves the website:
 
-For ease of use on your own site, you can symlink it in place:
 
-```bash
-ln --symbolic themes/ametrine/dev.sh dev.sh
-```
-
-{% crt() %}
+```crt=true
 rd@lappy ~/Projects/awsum-website (main)> ./dev.sh serve --drafts --open
    _             _       _          
   /_\  _ __  ___| |_ _ _(_)_ _  ___ 
@@ -123,17 +78,17 @@ Listening for changes in /home/rd/Projects/awsum-website/{config.toml,content,sa
 Press Ctrl+C to stop
 
 Web server is available at http://127.0.0.1:1111 (bound to 127.0.0.1:1111)
-{% end %}
-
-When working offline you can set `AMETRINE_OFFLINE` environment variable to `1`, which will skip all remote requests, if any. Keep in mind that it's a very dirty workaround for being able to build Ametrine at all while being offline, not something you should rely on normally.
+```
 
 ## Why It Looks the Way It Does
 
-Personally, I'm sick of flat, sterile, dead UIs all over the place, and I've always liked skeuomorphism because it's fun, alive, and pleasant to look at. While it's not very feasible to make things look overly realistic, some edge highlights, nice shadows, and a vibrant palette make a big difference. The design system that Ametrine uses is made of slightly frosted colored acrylic, everything is rounded, but the edges are not so rounded, so the edge highlight is rather thin, you can think of it as Lego bricks, fun and nice to touch. The animations are very bouncy to raise the fun level even higher. Still, the balance between fun and not being annoying is maintained. Did I succeed with this premise? I don't know, you tell me :P
+> Personally, I'm sick of flat, sterile, dead UIs all over the place, and I've always liked skeuomorphism because it's fun, alive, and pleasant to look at. While it's not very feasible to make things look overly realistic, some edge highlights, nice shadows, and a vibrant palette make a big difference. The design system that Ametrine uses is made of slightly frosted colored acrylic, everything is rounded, but the edges are not so rounded, so the edge highlight is rather thin, you can think of it as Lego bricks, fun and nice to touch. The animations are very bouncy to raise the fun level even higher. Still, the balance between fun and not being annoying is maintained. Did I succeed with this premise? I don't know, you tell me :P
+
+-- [Daudix](https://daudix.one), author of [Ametrine](https://codeberg.org/daudix/ametrine)
 
 ## To-Do
 
-As of right now, Ametrine is not ready to be used in production and is in active development, here's a roadmap of features that need to be implemented, issues to be fixed, and things to be rewritten before the initial release: <https://codeberg.org/daudix/ametrine/milestone/12016>. <small>(asking me "v0.1 when" won't make the process any faster, I want to release it <abbr title="as soon as possible">ASAP</abbr> just like you do)</small>
+As of right now, Ametrine is not ready to be used in production and is in active development, here's a roadmap of features that need to be implemented, issues to be fixed, and things to be rewritten before the initial release: <https://codeberg.org/daudix/ametrine/milestone/12016>. <small>(asking daudix "v0.1 when" won't make the process any faster, I want to release it <abbr title="as soon as possible">ASAP</abbr> just like you do)</small>
 
 
 <style>
