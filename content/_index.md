@@ -6,11 +6,11 @@ no_header = true
 
 <div class="container-fill">
   <img id="logo" class="has-alpha drop-shadow" src="logo.svg" alt="VTuber-style Ametrine logo.">
-
+  <small class="center">unofficial starter template</small>
 
   <div class="buttons centered big">
-    <a class="suggested" href="/demo/">Demo →</a>
-    <a href="https://codeberg.org/daudix/ametrine">Repository →</a>
+    <a class="suggested" href="https://github.com/backups1der/ametrine-starter-template">Template repository →</a>
+    <a href="https://codeberg.org/daudix/ametrine">Theme repository →</a>
   </div>
   
   [Ametrine](https://en.wikipedia.org/wiki/Ametrine) is a "one of a kind" [Zola](https://www.getzola.org) theme made specifically for personal websites and blogs. It provides good defaults and easy configuration, while being somewhat flexible on demand. Its design is unique and made with great care and attention to details, it changes from time to time, and the development pace is rather rapid.
@@ -93,10 +93,24 @@ As of right now, Ametrine is not ready to be used in production and is in active
 
 <style>
   #logo {
-    width: min(calc(var(--content-width) / 2), 100%);
+    width: min(calc(var(--content-width) / 1.5), 100%);
+    
+    opacity: 1;
+    filter: none;
+    scale: 1;
+    transform: none;
+    
+    transition: var(--transition-bezier-longer);
+
+    @starting-style {
+      opacity: 0;
+      filter: blur(2.5rem);
+      scale: 0;
+      transform: translateY(-5rem);
+    }
   }
 
   #logo:hover {
-    transform: var(--hover) rotate(-5deg);
+    transform: var(--hover) rotate(-3.5deg) translateY(-8px);
   }
 </style>

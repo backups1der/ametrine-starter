@@ -180,7 +180,7 @@ show_comments_qr = true
 # favicon          = favicon.png
 # apple_touch_icon = apple-touch-icon.png
 # card             = card.png
-favicon = "🙂"
+favicon = true
 apple_touch_icon = "favicon.png"
 card = true
 
@@ -196,7 +196,6 @@ icon = true
 # Any icon name from https://phosphoricons.com can be used.
 links = [
   { url = "@/blog/_index.md", name = "Blog", icon = "newspaper" },
-  { url = "@/demo/_index.md", name = "Demo", icon = "info" },
   { url = "@/about/_index.md", name = "About me", icon = "user" },
 ]
 
