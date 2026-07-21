@@ -1,4 +1,4 @@
-name: Build Zola website and deploy to GitHub Pages
+name: Build Zola project and deploy to GitHub Pages
 
 on:
   push:
