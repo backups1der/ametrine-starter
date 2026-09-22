@@ -15,36 +15,28 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout main branch
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6.0.1
       with:
         submodules: recursive
         fetch-depth: 1
-        persist-credentials: false
 
-    - name: Setup Pages
-      id: pages
-      uses: actions/configure-pages@v5
-    
-    - name: echo this repository's Pages domain
-      run: echo "${{ steps.pages.outputs.base_url }}"
-      
-    - uses: taiki-e/install-action@v2
+    - name: Build the project and upload public/ as an artifact
+      uses: getzola/github-pages
       with:
-        tool: zola@0.22.1
+          zola_version: v.22.1
 
-    - name: Build the website
-      run: zola build --base-url "${{ steps.pages.outputs.base_url }}"
+  deploy:
+  runs-on: ubuntu-latest
+  needs: build
+  environment:
+    url: ${{ steps.deployment.outputs.page_url }}
 
-    - name: Upload /public as an action artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: public
-
+  steps:
     - name: Deploy artifact to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
