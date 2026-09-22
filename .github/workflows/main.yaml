@@ -26,7 +26,7 @@ jobs:
         fetch-depth: 1
 
     - name: Build the project and upload public/ as an artifact
-      uses: getzola/github-pages
+      uses: getzola/github-pages@latest
       with:
           zola_version: v.22.1
 
