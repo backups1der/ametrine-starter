@@ -1,0 +1,59 @@
+name: Build Zola website and deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  prerequisites:
+    name: Set up prerequisites
+    runs-on: ubuntu-latest
+    env:
+      ZOLA_VERSION: 0.22.1
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Get zola ${{ env.ZOLA_VERSION }}
+        uses: taiki-e/install-action@v2
+        with:
+          tool: zola@${{ env.ZOLA_VERSION }}
+
+  build:
+    name: Build the project as an artifact
+    runs-on: ubuntu-latest
+    needs: prerequisites
+    steps:
+      - name: Let it build...
+        run: zola build --base-url "${{ steps.pages.outputs.base_url }}"
+
+      - name: Upload /public as an action artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    name: Deploy the artifact
+    runs-on: ubuntu-latest
+    needs: build 
+    steps:
+      - name: Deploy artifact to GitHub Pages
+        uses: actions/deploy-pages@v4
