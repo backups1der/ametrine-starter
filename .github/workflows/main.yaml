@@ -32,17 +32,17 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Get zola ${{ env.ZOLA_VERSION }}
-        uses: taiki-e/install-action@v2
-        with:
-          tool: zola@${{ env.ZOLA_VERSION }}
-
   build:
     name: Build the project as an artifact
     runs-on: ubuntu-latest
     needs: prerequisites
     steps:
-      - name: Let it build...
+      - name: Get zola
+        uses: taiki-e/install-action@v2
+        with:
+          tool: zola@${{ env.ZOLA_VERSION }}
+
+      - name: Let the project get built
         run: zola build --base-url "${{ steps.pages.outputs.base_url }}"
 
       - name: Upload /public as an action artifact
