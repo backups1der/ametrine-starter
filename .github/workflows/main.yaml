@@ -28,7 +28,7 @@ jobs:
     - name: Build the project and upload public/ as an artifact
       uses: getzola/github-pages@066755243e69f508fd1a74739fbf1a65f656c790
       with:
-          zola_version: v.22.1
+          zola_version: 0.22.1
 
   deploy:
     runs-on: ubuntu-latest
