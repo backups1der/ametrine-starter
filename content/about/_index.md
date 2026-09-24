@@ -1,6 +1,6 @@
 +++
 title = "About this idiot"
-description = "How does this idiot cant stop being an stupid ass? We don't have the answer, though we do have a way to send notifications directly to him."
+description = "Some stuff about me, this is a template, yadda yadda yadda. If you see this, then the owner forgot to update some stuff from the template. Especially some people got a very, very crude message that was a remnant from my- I mean, the template owner's website 😭"
 generate_feeds = true
 
 
