@@ -33,51 +33,51 @@ Some of Ametrine's features:
 - Relatively lightweight, weights under 512kB.
 - Uses modern CSS.
 - Includes Monokai Pro theme for syntax highlighting out of the box.
-- Will make you regret using this theme.
+- Will make you "regret" using this theme.
   - Maybe. It has made poeple love this theme --- a crazy guy has made this template for a reason.
 
 ## What Is This Again
-
 This is a theme for the [Zola](https://www.getzola.org) static site generator; thingy that converts [Markdown](https://www.markdownguide.org) files (which is used by Reddit, Tumblr, Discord, any many others) into a fully functional websites. Zola cannot build websites without a set of templates and styles, and this theme is exactly that. Ametrine also provides some custom functionality that is not present in Zola, such as Mastodon-powered comments, various useful shortcodes for simplifying various tasks, and more.
 
 You can learn more about Zola and its themes at <https://www.getzola.org>.
 
 ## Maintenance & References
 > [!IMPORTANT]
-> I am going to assume that you have enough knowledge to either use Git from CLI or your preferred editor's Git integration, have enough experience to operate your projects on GitHub. You can have Zola set up on your machine to get live previewing; but it's not exactly required to use with this template since the build workflow installs Zola and builds your website automatically, publishing it to current repository's [GitHub Pages](https://docs.github.com/pages) page.
+> I am going to assume that you have enough knowledge to either use Git from CLI or your preferred editor's Git integration, and have enough experience to operate your projects on GitHub.  
+> It's **highly** preferred to have Zola set up on your machine to get a live preview while developing; but it's not required to use with this template as the build workflow installs Zola and builds your website with a Github Actions workflow.
 >
-> Don't worry, all of these are easy to learn: you don't need to use much brainpower to figure out how to use Git in VSCode/Zed. Zola provides [installation instructions](https://www.getzola.org/documentation/getting-started/installation/), so you should be able to get that on your system pretty easily.
+> Zola provides [installation instructions](https://www.getzola.org/documentation/getting-started/installation/), so you should be able to get that on your system pretty easily.
 
 To update Ametrine, simply update the theme submodule to the latest commit:
 
 ```bash
-git submodule update --remote themes/ametrine
+git submodule update --remote --recursive
 ```
 > [!IMPORTANT]
 > Check the [commit history of Ametrine](https://codeberg.org/daudix/ametrine/commits/branch/main) before updating; there may be breaking changes that require manual involvement.
 
-Ametrine has it's own [demo](https://ametrine.daudix.one/demo) page which shows off some features. You can also check the [CommonMark specification page](https://spec.commonmark.org), where it lists what CommonMark can do.
+Ametrine has it's own [demo page](https://ametrine.daudix.one/demo) which shows off some of it's features.
+You can also check the [CommonMark specification page](https://spec.commonmark.org), the Markdown specification Zola's processor refers to, where it lists what CommonMark can do.
 
 ## Development
-
-There is a `serve.sh` file on root of the project, that sources .env file and serves the website:
-
+There is a `serve.sh` file on root of the project, that sources .env file (if it's present) and serves the website. If you have the required version of Zola this theme requires, then the script should run and give a output similar to this:
 
 ```crt=true
-rd@lappy ~/Projects/awsum-website (main)> ./dev.sh serve --drafts --open
+you@lappy ~/Projects/awsum-website (main)> ./serve.sh serve --drafts --open
    _             _       _          
   /_\  _ __  ___| |_ _ _(_)_ _  ___ 
  / _ \| '  \/ -_)  _| '_| | ' \/ -_)
 /_/ \_\_|_|_\___|\__|_| |_|_||_\___|
                                     
-Building site...
--> Creating 16 pages (2 orphan) and 3 sections
-Done in 6.5s.
 
-Listening for changes in /home/rd/Projects/awsum-website/{config.toml,content,sass,static,templates}
+Building site...
+-> Creating 1 pages (0 orphan) and 2 sections
+Done in 369ms.
+
+Listening for changes in /home/you/Projects/awsum-website/{zola.toml,content,sass,static,templates,themes}
 Press Ctrl+C to stop
 
-Web server is available at http://127.0.0.1:1111 (bound to 127.0.0.1:1111)
+Web server is available at http://127.0.0.1:1111/ (bound to 127.0.0.1:1111)
 ```
 
 ## Why It Looks the Way It Does
@@ -88,7 +88,8 @@ Web server is available at http://127.0.0.1:1111 (bound to 127.0.0.1:1111)
 
 ## To-Do
 
-As of right now, Ametrine is not ready to be used in production and is in active development, here's a roadmap of features that need to be implemented, issues to be fixed, and things to be rewritten before the initial release: <https://codeberg.org/daudix/ametrine/milestone/12016>. <small>(asking daudix "v0.1 when" won't make the process any faster, I want to release it <abbr title="as soon as possible">ASAP</abbr> just like you do)</small>
+As of right now, Ametrine is not ready to be used in production and is in active development, here's a roadmap of features that need to be implemented, issues to be fixed, and things to be rewritten before the initial release: <https://codeberg.org/daudix/ametrine/milestone/12016>. <small>(asking daudix "v0.1 when" won't make the process any faster, he wants to release it <abbr title="as soon as possible">ASAP</abbr> just like you wanting this to be done)</small>
+
 
 
 <style>
@@ -100,13 +101,12 @@ As of right now, Ametrine is not ready to be used in production and is in active
     scale: 1;
     transform: none;
     
-    transition: var(--transition-bezier-longer);
+    transition: var(--transition-bezier-longer) .35s;
 
     @starting-style {
       opacity: 0;
       filter: blur(2.5rem);
-      scale: 0;
-      transform: translateY(-5rem);
+      scale: .25;
     }
   }
 
