@@ -4,8 +4,8 @@
 # as setting your base URL to "/" let's you to build your website for any domain as
 # opposed to hardcoding it to your's which can cause styling issues wehn you change your domain
 base_url = "https://backups1der.github.io/ametrine-starter-template/"
-title = "Blog name"   # Appears in your browser's tab title and home page
-description = "Description"   # Appears in your site's home page
+title = ".::CHANGE ME::. // Blog name"   # Appears in your browser's tab title and home page
+description = ".:: CHANGE THIS TOO ::."   # Appears in your site's home page
 
 theme = "ametrine"
 author = "Awesome guy"  # Change it to your online handle (or your name if you're OK with it lol)
@@ -227,7 +227,7 @@ webrings = [
   { name = "Example Webring", url = "https://example.com", previous = "https://example.com/prev", next = "https://example.com/next", random = "https://example.com/random" },
 ]
 
-note = "<small>Did you know that you could change this text to your liking, and remove it completely?</small>"
+note = "<small>Did you know that you could change this text to your liking, and remove it completely? Some people also started to use this to embed small images and other stuff. </small><strong class='title'>Please change this, ASAP.</strong>"
 
 # [extra.fediverse]
 # Fediverse integration.
